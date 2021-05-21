@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -26,15 +26,38 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="710fd3bc-788b-411c-a804-b4f67e8d3b12">
-        <schema name="HR" object-types="view, table, materialized view, synonym" />
-        <schema name="PUBLIC" object-types="view, table, materialized view, synonym" />
+        <schema name="HR" object-types="cluster, table, procedure, type, package, sequence, materialized view, package type, function, column, dimension, dblink, type function, view, synonym, package function, database trigger" />
+        <schema name="PUBLIC" object-types="table, type, package, sequence, materialized view, function, view, synonym" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="710fd3bc-788b-411c-a804-b4f67e8d3b12">
-      <console name="Oracle_Sql" type="STANDARD" schema="HR" session="Main"><![CDATA[select *
-from SIRKETLER;]]></console>
+      <console name="Oracle_Sql" type="STANDARD" schema="HR" session="Main"><![CDATA[select merkez_ulke
+from SIRKETLER;
+
+--//sirketler tablosunda toplam kac sirket ismi var
+select count(sirket_adi) as totalSirket
+from HR.SIRKETLER;
+
+--almanya merkezi sirketlerin sayisi kac
+select count(*) as merkezGermany
+from SIRKETLER
+where MERKEZ_ULKE='Germany';
+
+--/turkiye sirketlerinin toplam kac obonesi var
+select sum(ABONE_SAYISI) as aboneSayisi
+from SIRKETLER
+where MERKEZ_ULKE='Turkey';
+
+--alman sirketlerinin ortalama kac obonesi var (veri yok ise hesaplamaya dahil etmeyin)
+select round (avg(ABONE_SAYISI))
+from SIRKETLER
+where MERKEZ_ULKE='Germany';
+
+--en cok abonesi olan 2. sirket hangisi
+select *
+from SIRKETLER < (select max(ABONE_SAYISI) from SIRKETLER);]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
