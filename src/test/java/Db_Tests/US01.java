@@ -80,14 +80,14 @@ public class US01 {
     }
 
 
-    /*
------id ---  sirket adi ----merkez_ulke --abone_sayisi-kurulus_tarih--odeme_turu--kisisel_satis
---+++++++                     +++++                                           +++         +++
---1200        Apple            USA          500.000       05-05-2005         hepsi        var
---1210                        USA                                           kredi kart   yok
---1220       Burberry         England        100.000                           nakit      yok
---1230      Conforama         France                       03-03-2003         hepsi       var
---1240                       Turkey         1             23-05-2021          nakit       yok
+
+
+
+
+
+
+
+/*
 
 ---merkez ulkesi Turkey ve Usa olan ulkelerin 2000 yilindan sonra kurulanlarin sayisini bulunuz//
 
