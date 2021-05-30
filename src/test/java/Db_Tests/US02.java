@@ -45,15 +45,20 @@ public class US02 {
     //kurulus yili cift sayi olanlarin sayisini bulunuz
     @Test
     public void soru08() throws SQLException {
-        String query="select KURULUS_TARIHI\n" +
-                "from SIRKETLER";
+        String query="select EXTRACT( YEAR FROM KURULUS_TARIHI ) AS year\n" +
+                "from   SIRKETLER";
         list = DatabaseConnector.getQueryAsAListOfMaps(query);
-      //  System.out.println(list);
+        System.out.println(list);
 
-        for (Map<String,String> w:list){
-            String year=w.get("KURULUS_TARIHI").substring(0,4);
-            System.out.println(year);
+        int count=0;
+        for (Map<String,String> w: list){
+            System.out.println(w.get("YEAR"));
+           int yil= w.get("YEAR")!=null ? Integer.parseInt(w.get("YEAR")) : 1;
+           if(w.get("YEAR")!=null && yil%2==0){
+               count++;
+           }
         }
+        System.out.println(count);
 
     }
 
@@ -89,16 +94,19 @@ public class US02 {
                 " GROUP BY ODEME_TURU";
         list = DatabaseConnector.getQueryAsAListOfMaps(query);
         System.out.println(list);
-        int buyuksayi=0;
 
-        for (Map<String,String> w:list){
-            int sayi=Integer.parseInt(w.get("count(*)"));
-            if(buyuksayi<sayi) {
-                buyuksayi = sayi;
+
+        int max=0;
+        for (int i = 0; i < list.size() ; i++) {
+            int a = Integer.parseInt(list.get(i).get("COUNT(*)"));
+            System.out.println();
+            if(a>max){
+                max=a;
             }
         }
-        System.out.println("En buyuk sayi " + buyuksayi);
-    }
+        System.out.println(max);
+
+   }
 
 
 }
