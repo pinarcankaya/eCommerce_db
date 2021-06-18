@@ -19,6 +19,7 @@ public class US01 {
 
         String query1 = "select count(sirket_adi) as totalSirket\n" +
                 "from SIRKETLER";
+
         list1= DatabaseConnector.getQueryAsAListOfMaps(query1);
         System.out.println(list1.get(0).get("TOTALSIRKET"));
         Assert.assertEquals("18",list1.get(0).get("TOTALSIRKET"));

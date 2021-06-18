@@ -25,7 +25,6 @@ public class US02 {
         System.out.println(list.get(0));
         Assert.assertEquals("5", list.get(0).get("COUNT(*)"));
     }
-
     //sirket isminde a harfi bulunmayanlarin sayisini bulunuz
     @Test
     public void soru07() throws SQLException {
@@ -36,7 +35,6 @@ public class US02 {
         String query2 = "select count(*)\n" +
                 "from SIRKETLER\n" +
                 "where SIRKET_ADI not like '%a%' and  SIRKET_ADI not like  'A%'";
-
         list = DatabaseConnector.getQueryAsAListOfMaps(query2);
         System.out.println(list);
         Assert.assertEquals("7", list.get(0).get("COUNT(*)"));
