@@ -25,7 +25,7 @@ public class US02 {
         System.out.println(list.get(0));
         Assert.assertEquals("5", list.get(0).get("COUNT(*)"));
     }
-    //sirket isminde a harfi bulunmayanlarin sayisini bulunuz
+    //sirket isminde a A harfi bulunmayanlarin sayisini bulunuz
     @Test
     public void soru07() throws SQLException {
 //        String query = "select *\n" +
@@ -35,6 +35,7 @@ public class US02 {
         String query2 = "select count(*)\n" +
                 "from SIRKETLER\n" +
                 "where SIRKET_ADI not like '%a%' and  SIRKET_ADI not like  'A%'";
+
         list = DatabaseConnector.getQueryAsAListOfMaps(query2);
         System.out.println(list);
         Assert.assertEquals("7", list.get(0).get("COUNT(*)"));
@@ -45,13 +46,15 @@ public class US02 {
     public void soru08() throws SQLException {
         String query="select EXTRACT( YEAR FROM KURULUS_TARIHI ) AS year\n" +
                 "from   SIRKETLER";
+
         list = DatabaseConnector.getQueryAsAListOfMaps(query);
-        System.out.println(list);
+        //System.out.println(list);
 
         int count=0;
         for (Map<String,String> w: list){
             System.out.println(w.get("YEAR"));
            int yil= w.get("YEAR")!=null ? Integer.parseInt(w.get("YEAR")) : 1;
+
            if(w.get("YEAR")!=null && yil%2==0){
                count++;
            }
@@ -65,13 +68,15 @@ public class US02 {
     public void soru09() throws SQLException {
         String query = "select MERKEZ_ULKE,ABONE_SAYISI\n" +
                 "from SIRKETLER\n" +
-                "where ABONE_SAYISI like '_____'";
+                "where ABONE_SAYISI>9999 and ABONE_SAYISI<100000";
+
         list = DatabaseConnector.getQueryAsAListOfMaps(query);
         System.out.println(list.size());
         Assert.assertEquals(3,list.size());
 
     }
 
+    //odeme turu nakit olanlarin en fazla ve en az abone sayisini bulunuz
     @Test
     public void soru10() throws SQLException {
         String query="select max(ABONE_SAYISI),min(ABONE_SAYISI)\n" +
@@ -79,7 +84,8 @@ public class US02 {
                 "where ODEME_TURU='nakit'";
         list = DatabaseConnector.getQueryAsAListOfMaps(query);
         System.out.println(list);
-        Assert.assertTrue(list.get(0).get("MAX(ABONE_SAYISI)").equals("20000000") && list.get(0).get("MIN(ABONE_SAYISI)").equals("1"));
+        Assert.assertTrue(list.get(0).get("MAX(ABONE_SAYISI)").equals("20000000") &&
+                list.get(0).get("MIN(ABONE_SAYISI)").equals("1"));
 
 
     }
@@ -97,7 +103,6 @@ public class US02 {
         int max=0;
         for (int i = 0; i < list.size() ; i++) {
             int a = Integer.parseInt(list.get(i).get("COUNT(*)"));
-            System.out.println();
             if(a>max){
                 max=a;
             }

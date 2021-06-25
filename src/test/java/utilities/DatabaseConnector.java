@@ -12,9 +12,9 @@ public class DatabaseConnector {
     private static final String dbpassword = ConfigurationReader.getProperty("oracle_password");
     private static final String connectionUrl = ConfigurationReader.getProperty("oracleUrl");
 
-    private static Connection connection;
-    private static Statement statement;
-    private static ResultSet resultSet;
+    private static Connection connection;   //baglanti
+    private static Statement statement;  //sorgu
+    private static ResultSet resultSet;  //cevap
 
 
     public static ResultSet getResultSet(String query) {

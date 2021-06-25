@@ -21,6 +21,7 @@ public class US01 {
                 "from SIRKETLER";
 
         list1= DatabaseConnector.getQueryAsAListOfMaps(query1);
+
         System.out.println(list1.get(0).get("TOTALSIRKET"));
         Assert.assertEquals("18",list1.get(0).get("TOTALSIRKET"));
 
@@ -34,7 +35,9 @@ public class US01 {
                 "from SIRKETLER\n" +
                 "where MERKEZ_ULKE='Germany'";
         list1= DatabaseConnector.getQueryAsAListOfMaps(query1);
+
         System.out.println(list1.get(0).get("MERKEZGERMANY"));
+
         Assert.assertEquals(list1.get(0).get("MERKEZGERMANY"),"4");
 
 
@@ -46,6 +49,7 @@ public class US01 {
         String query1 = "select sum(ABONE_SAYISI) as aboneSayisi\n" +
                 "from SIRKETLER\n" +
                 "where MERKEZ_ULKE='Turkey'";
+
         list1= DatabaseConnector.getQueryAsAListOfMaps(query1);
         System.out.println(list1.get(0).get("ABONESAYISI"));
         Assert.assertEquals("50750001",list1.get(0).get("ABONESAYISI"));
@@ -72,10 +76,14 @@ public class US01 {
                 "from SIRKETLER\n" +
                 "where abone_sayisi<(select max(ABONE_SAYISI) from SIRKETLER)\n" +
                 "order by  abone_sayisi desc";
-        list1= DatabaseConnector.getQueryAsAListOfMaps(query1);
-        System.out.println(list1.get(0).get("SIRKET_ADI") + " " + list1.get(0).get("ABONE_SAYISI"));
-       // System.out.println(list1.get(0).get("ABONE_SAYISI"));
 
+
+
+        list1= DatabaseConnector.getQueryAsAListOfMaps(query1);
+        System.out.println(list1.get(0).get("ABONE_SAYISI"));
+        //System.out.println(list1.get(0).get("SIRKET_ADI") + " " + list1.get(0).get("ABONE_SAYISI"));
+       // System.out.println(list1.get(0).get("ABONE_SAYISI"));
+//
         Assert.assertEquals("250000000",list1.get(0).get("ABONE_SAYISI"));
         Assert.assertEquals("Ali Expres",list1.get(0).get("SIRKET_ADI"));
 
