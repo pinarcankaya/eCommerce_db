@@ -26,11 +26,11 @@ public class US04 {
 //--toplam personel sayisini bulunuz
     @Test
     public void TC0402() throws SQLException {
-        String query = "select count(CALISAN_ID)\n" +
-                "from personel;";
+        String query = "select count(CALISAN_ID) as total\n" +
+                "from personel";
         list = DatabaseConnector.getQueryAsAListOfMaps(query);
-        System.out.println(list.get(0).get("ABONE"));
-
+        System.out.println(list.get(0).get("TOTAL"));
+        Assert.assertEquals("28",list.get(0).get("TOTAL"));
 
 
     }
@@ -45,14 +45,6 @@ public class US04 {
         Assert.assertEquals("3060",list.get(0).get("MAASFARK"));
 
     }
-//--Maasi 2000'den az olan calisanlarin maaslarina 300 lira zam yapalim
-    @Test
-    public void TC0404() throws SQLException {
-        String query = "update personel set MAAS=MAAS+300\n" +
-                " where MAAS<2000;";
 
 
-
-
-    }
 }

@@ -1,0 +1,41 @@
+CREATE TABLE sirketler (
+sirket_id  NUMBER(4),
+sirket_adi VARCHAR2(20),
+merkez_ulke VARCHAR2(20) NOT NULL,
+abone_sayisi NUMBER(15) CHECK(abone_sayisi > 0),
+kurulus_tarihi DATE,
+odeme_turu VARCHAR2(20) NOT NULL,
+kisisel_satis_imkani CHAR(3) NOT NULL,
+CONSTRAINT pk_sirket_id PRIMARY KEY(sirket_id)
+);
+
+INSERT INTO sirketler(sirket_id,sirket_adi,merkez_ulke,kurulus_tarihi,odeme_turu,kisisel_satis_imkani) VALUES(1040,'Carrefour','France','01-01-1990','hepsi','yok');++
+INSERT INTO sirketler(sirket_id,sirket_adi,merkez_ulke,kurulus_tarihi,odeme_turu,kisisel_satis_imkani) VALUES(1080,'Kaufland','Germany','01-08-1999','kredi kart','yok');++
+
+
+INSERT INTO sirketler  VALUES(1010,'Ali Expres','China','2500000000','01-01-1999','kredi kart','var');
+update sirketler set abone_sayisi=250000000 where sirket_id=1010;
+INSERT INTO sirketler  VALUES(1030,'Aldi','Germany','25000','01-01-1960','hepsi','yok');
+INSERT INTO sirketler  VALUES(1031,'Lidl','Germany','30000','01-01-2005','hepsi','yok');
+INSERT INTO sirketler  VALUES(1050,'Gitti Gidiyor','Turkey','20000000','01-01-2001','nakit','var');
+INSERT INTO sirketler  VALUES(1021,'Amazon','Usa','300000000','01-01-1994','kredi kart','var');
+INSERT INTO sirketler  VALUES(1060,'Sahibinden','Turkey','30000000','01-01-1993','hepsi','var');
+INSERT INTO sirketler  VALUES(1070,'Ebay','Usa','25000000','01-05-1985','hepsi','var');
+INSERT INTO sirketler  VALUES(1090,'Ozturk','Turkey','300000','01-01-2015','nakit','yok');
+INSERT INTO sirketler  VALUES(1110,'Metin Tekstil','Afganistan','50000','01-01-2015','nakit','yok');
+INSERT INTO sirketler  VALUES(1502,'Ahmet Nakliye','Yunanistan','1000','15-09-2016','nakit','var');
+INSERT INTO sirketler  VALUES(1601,'Techproed','Usa','2500','06-04-2008','kredi kart','yok');
+INSERT INTO sirketler  VALUES(1091,'Tugba Kuruyemis','Turkey','450000','08-07-1945','hepsi','yok');
+INSERT INTO sirketler  VALUES(1041,'Immowelt','Germany','10000000','30-09-2002','kredi kart','var');
+----2-Ders
+INSERT INTO sirketler(sirket_id,merkez_ulke,odeme_turu,kisisel_satis_imkani) VALUES(1210,'Usa','nakit','yok');
+INSERT INTO sirketler(sirket_id,sirket_adi,merkez_ulke,odeme_turu,kisisel_satis_imkani) VALUES(1230,'Conforama','France','hepsi','var');
+INSERT INTO sirketler(sirket_id,merkez_ulke,abone_sayisi,kurulus_tarihi,odeme_turu,kisisel_satis_imkani) VALUES(1240,'Turkey','1','23-05-2021','nakit','yok');
+
+INSERT INTO sirketler  VALUES(1200,'Apple','Usa','500000','05-05-2005','hepsi','var');++
+INSERT INTO sirketler  VALUES(1220,'Burberry','England','100000','03-03-2003','nakit','yok');++
+
+commit;
+select *
+from sirketler;
+

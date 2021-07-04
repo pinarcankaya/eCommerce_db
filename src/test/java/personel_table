@@ -1,0 +1,45 @@
+CREATE TABLE personel (
+calisan_id	number(6),
+sirket_id	number(4),
+ad	varchar2(20) not null,
+soyad	varchar2(20) not null,
+maas	number(5) check(maas>0),
+aile_id	 number(5) not null,
+ise_giris	date,
+constraint pk_calisan_id primary key(calisan_id),
+constraint fk_sirket_id foreign key(sirket_id) references sirketler(sirket_id)
+);
+
+
+
+INSERT INTO personel  VALUES(8001,1010,'samet','fatma',2500,11,'01.01.2000');    
+INSERT INTO personel  VALUES(8002,1030,'ibrahim','nuri',2300,12,'01.01.1990'); 
+INSERT INTO personel  VALUES(8003,1040,'ali','cengiz',1200,13,'01.01.2001');
+INSERT INTO personel  VALUES(8004,1050,'veli','mahmut',1250,14,'01.01.1994');
+INSERT INTO personel  VALUES(8005,1021,'hasan','ozlem',1950,15,'01.01.2005');
+INSERT INTO personel  VALUES(8006,1031,'resit','meltem',2000,16,'01.01.1993');
+INSERT INTO personel  VALUES(8007,1060,'iskender','cicek',2700,17,'01.05.1985');
+INSERT INTO personel  VALUES(8008,1070,'selim','ertan',1040,18,'01.05.1985');
+INSERT INTO personel  VALUES(8009,1080,'pinar','yusuf',2060,19,'01.08.1999');
+INSERT INTO personel  VALUES(8010,1090,'fatma','metin',1950,20,'01.01.2015');
+INSERT INTO personel  VALUES(8011,1110,'nuri','musa',2500,21,'01.01.2015');
+INSERT INTO personel  VALUES(8012,1502,'cengiz','cuneyt',2300,22,'15.09.2016');
+INSERT INTO personel  VALUES(8013,1601,'mahmut','ismail',1200,23,'06.04.2008');
+INSERT INTO personel  VALUES(8014,1091,'ozlem','deniz',1250,24,'08.07.1945');
+INSERT INTO personel  VALUES(8015,1041,'meltem','defne',1950,25,'01.01.2015');
+INSERT INTO personel  VALUES(8016,1200,'enes','altay',2000,26,'15.09.2016');
+INSERT INTO personel  VALUES(8017,1210,'ertan','arda',2700,27,'01.01.1994');
+INSERT INTO personel  VALUES(8018,1220,'yusuf','cetin',4000,28,'01.01.2005');
+INSERT INTO personel  VALUES(8019,1230,'metin','demir',3560,29,'01.01.1993');
+INSERT INTO personel  VALUES(8020,1240,'musa','resit',2000,30,'01.05.1985');
+INSERT INTO personel  VALUES(8021,1502,'cuneyt','iskender',1860,31,'01.05.1985');
+INSERT INTO personel  VALUES(8022,1601,'ismail','selim',1950,32,'01.08.1999');
+INSERT INTO personel  VALUES(8023,1091,'deniz','pinar',3000,33,'01.01.2015');
+INSERT INTO personel  VALUES(8024,1041,'defne','fatma',2600,34,'01.01.2015');
+INSERT INTO personel  VALUES(8025,1200,'altay','nuri',2450,35,'15.09.2016');
+INSERT INTO personel  VALUES(8026,1210,'arda','cengiz',4100,36,'06.04.2008');
+INSERT INTO personel  VALUES(8027,1220,'cetin','yildiz',2650,37,'08.07.1945');
+INSERT INTO personel  VALUES(8028,1230,'demir','demirkan',1900,38,'01.01.2015');
+
+
+commit;
